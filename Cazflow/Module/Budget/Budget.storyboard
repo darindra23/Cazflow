@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xb6-WN-ucH">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Budget View Controller-->
+        <scene sceneID="poK-EF-ed0">
+            <objects>
+                <viewController id="6I2-f8-f57" customClass="BudgetViewController" customModule="Cazflow" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6ia-sY-FN7">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2h-D5-ba3">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="195"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4KY-0q-IkH">
+                                        <rect key="frame" x="0.0" y="128" width="390" height="50.666666666666657"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budgeting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ADS-vK-a9B">
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="28.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your own personal budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsC-Z6-ola">
+                                                <rect key="frame" x="0.0" y="33.666666666666657" width="390" height="17"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.75686274509999996" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="4KY-0q-IkH" secondAttribute="trailing" id="G8o-GR-qyK"/>
+                                    <constraint firstItem="4KY-0q-IkH" firstAttribute="leading" secondItem="S2h-D5-ba3" secondAttribute="leading" id="N3h-6c-Lno"/>
+                                    <constraint firstAttribute="height" constant="195" id="XtB-Iu-O3a"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EA4-JN-ERy">
+                                <rect key="frame" x="0.0" y="206.99999999999997" width="390" height="445.33333333333326"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="kVE-cX-uta">
+                                    <size key="itemSize" width="350" height="160"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6I2-f8-f57" id="E2x-dZ-vXF"/>
+                                    <outlet property="delegate" destination="6I2-f8-f57" id="CbH-16-iHL"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KnI-LQ-5Oj" userLabel="Divider">
+                                <rect key="frame" x="15" y="652.33333333333337" width="360" height="1"/>
+                                <color key="backgroundColor" red="0.96078431369999995" green="0.75686274509999996" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ibf-c9-4JK"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gG0-qD-bV8">
+                                <rect key="frame" x="34" y="673.33333333333337" width="322" height="51"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" backgroundImage="Budget Button">
+                                    <color key="titleColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addBudget:" destination="6I2-f8-f57" eventType="touchUpInside" id="3DB-Vs-qlr"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5L1-m2-XAF">
+                                <rect key="frame" x="34" y="744.33333333333337" width="322" height="45.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQV-vJ-1aA">
+                                        <rect key="frame" x="0.0" y="0.0" width="322" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IEy-DH-XQO">
+                                        <rect key="frame" x="0.0" y="17" width="322" height="28.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="yTa-5G-rO6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KnI-LQ-5Oj" firstAttribute="top" secondItem="EA4-JN-ERy" secondAttribute="bottom" id="CgU-iT-IdJ"/>
+                            <constraint firstItem="EA4-JN-ERy" firstAttribute="top" secondItem="S2h-D5-ba3" secondAttribute="bottom" constant="12" id="F7v-KI-VUN"/>
+                            <constraint firstItem="yTa-5G-rO6" firstAttribute="bottom" secondItem="5L1-m2-XAF" secondAttribute="bottom" constant="20" id="JZq-Es-bUM"/>
+                            <constraint firstAttribute="top" secondItem="S2h-D5-ba3" secondAttribute="top" id="Rfi-HN-KF6"/>
+                            <constraint firstItem="yTa-5G-rO6" firstAttribute="trailing" secondItem="EA4-JN-ERy" secondAttribute="trailing" id="S25-aO-XDY"/>
+                            <constraint firstItem="4KY-0q-IkH" firstAttribute="top" secondItem="yTa-5G-rO6" secondAttribute="top" constant="40" id="YgI-0C-DGd"/>
+                            <constraint firstItem="yTa-5G-rO6" firstAttribute="trailing" secondItem="S2h-D5-ba3" secondAttribute="trailing" id="ZRh-ft-ijZ"/>
+                            <constraint firstItem="KnI-LQ-5Oj" firstAttribute="leading" secondItem="yTa-5G-rO6" secondAttribute="leading" constant="15" id="bqw-qr-gPS"/>
+                            <constraint firstItem="EA4-JN-ERy" firstAttribute="leading" secondItem="yTa-5G-rO6" secondAttribute="leading" id="c9y-NW-035"/>
+                            <constraint firstItem="5L1-m2-XAF" firstAttribute="trailing" secondItem="gG0-qD-bV8" secondAttribute="trailing" id="fHc-QJ-M4R"/>
+                            <constraint firstItem="5L1-m2-XAF" firstAttribute="leading" secondItem="gG0-qD-bV8" secondAttribute="leading" id="iQY-Jb-v89"/>
+                            <constraint firstItem="gG0-qD-bV8" firstAttribute="centerX" secondItem="yTa-5G-rO6" secondAttribute="centerX" id="ild-Kj-73C"/>
+                            <constraint firstItem="gG0-qD-bV8" firstAttribute="top" secondItem="KnI-LQ-5Oj" secondAttribute="bottom" constant="20" id="t8K-Dv-wLm"/>
+                            <constraint firstItem="yTa-5G-rO6" firstAttribute="trailing" secondItem="KnI-LQ-5Oj" secondAttribute="trailing" constant="15" id="urf-XY-1Tu"/>
+                            <constraint firstItem="5L1-m2-XAF" firstAttribute="top" secondItem="gG0-qD-bV8" secondAttribute="bottom" constant="20" id="wq9-sZ-X0C"/>
+                            <constraint firstItem="S2h-D5-ba3" firstAttribute="leading" secondItem="yTa-5G-rO6" secondAttribute="leading" id="x5Z-z8-QZf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xFc-d1-Cce"/>
+                    <connections>
+                        <outlet property="addBudgetButton" destination="gG0-qD-bV8" id="EOq-8O-tjs"/>
+                        <outlet property="balance" destination="IEy-DH-XQO" id="zol-XS-Apl"/>
+                        <outlet property="collectionView" destination="EA4-JN-ERy" id="Zd9-Ek-fv0"/>
+                        <outlet property="topView" destination="S2h-D5-ba3" id="dsm-6N-lsp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N6O-Gk-80M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695.38461538461536" y="174.88151658767771"/>
+        </scene>
+        <!--Budget-->
+        <scene sceneID="Fwz-JT-fno">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xb6-WN-ucH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Budget" image="Budget" id="1IN-nh-pMZ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hm4-fF-s8c">
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6I2-f8-f57" kind="relationship" relationship="rootViewController" id="sZG-qG-0Sb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qjW-Be-7lY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-233.84615384615384" y="174.88151658767771"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Budget" width="30.666666030883789" height="25"/>
+        <image name="Budget Button" width="322" height="51"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

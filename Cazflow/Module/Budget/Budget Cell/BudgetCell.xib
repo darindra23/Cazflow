@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="BudgetCell" customModule="Cazflow" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8D7-Zj-5wi" userLabel="Container View">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="160"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1kb-Z1-FSb">
+                                <rect key="frame" x="8" y="15" width="334" height="130"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MFY-Rf-iqm">
+                                        <rect key="frame" x="15" y="15" width="304" height="32.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Housing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wyQ-KK-iuj">
+                                                <rect key="frame" x="0.0" y="0.0" width="304" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
+                                                <color key="textColor" red="0.96078431372549022" green="0.76078431372549016" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal budget for rent,electricity, etc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t6S-9S-Wsn">
+                                                <rect key="frame" x="0.0" y="18" width="304" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="3Jq-9w-AOg">
+                                        <rect key="frame" x="15" y="57.5" width="304" height="36"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9ug-Dd-VB3">
+                                                <rect key="frame" x="0.0" y="0.0" width="168.5" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53v-HA-Izq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="168.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 10.000.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIh-AZ-wiQ">
+                                                        <rect key="frame" x="0.0" y="18" width="168.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" red="0.96078431369999995" green="0.76078431369999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Eo-Ky-cCy">
+                                                <rect key="frame" x="168.5" y="0.0" width="135.5" height="36"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-cQ-o7C">
+                                                        <rect key="frame" x="0.0" y="0.0" width="135.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 500.000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYc-6E-p77">
+                                                        <rect key="frame" x="0.0" y="18" width="135.5" height="18"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <color key="textColor" red="0.96078431369999995" green="0.76078431369999999" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9TJ-8U-O20">
+                                        <rect key="frame" x="15" y="108.5" width="304" height="4"/>
+                                        <color key="backgroundColor" red="0.96078431372549022" green="0.76470588235294112" blue="0.46274509803921571" alpha="0.19660242345948883" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.96078431372549022" green="0.76470588235294112" blue="0.46274509803921571" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    </progressView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MFY-Rf-iqm" secondAttribute="trailing" constant="15" id="6ah-VJ-EIu"/>
+                                    <constraint firstItem="9TJ-8U-O20" firstAttribute="trailing" secondItem="fYc-6E-p77" secondAttribute="trailing" id="W8B-yq-7CC"/>
+                                    <constraint firstItem="3Jq-9w-AOg" firstAttribute="top" secondItem="MFY-Rf-iqm" secondAttribute="bottom" constant="10" id="aSG-55-emp"/>
+                                    <constraint firstItem="9TJ-8U-O20" firstAttribute="leading" secondItem="AIh-AZ-wiQ" secondAttribute="leading" id="cSv-Xo-x4d"/>
+                                    <constraint firstItem="3Jq-9w-AOg" firstAttribute="leading" secondItem="MFY-Rf-iqm" secondAttribute="leading" id="fVi-El-OIr"/>
+                                    <constraint firstItem="9TJ-8U-O20" firstAttribute="top" secondItem="3Jq-9w-AOg" secondAttribute="bottom" constant="15" id="hBg-cG-bQe"/>
+                                    <constraint firstItem="3Jq-9w-AOg" firstAttribute="trailing" secondItem="MFY-Rf-iqm" secondAttribute="trailing" id="iiE-yH-oPC"/>
+                                    <constraint firstItem="MFY-Rf-iqm" firstAttribute="leading" secondItem="1kb-Z1-FSb" secondAttribute="leading" constant="15" id="kmo-FL-cRk"/>
+                                    <constraint firstItem="MFY-Rf-iqm" firstAttribute="top" secondItem="1kb-Z1-FSb" secondAttribute="top" constant="15" id="lCF-xg-mxi"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1kb-Z1-FSb" firstAttribute="leading" secondItem="8D7-Zj-5wi" secondAttribute="leading" constant="8" id="AKS-p4-v5E"/>
+                            <constraint firstItem="1kb-Z1-FSb" firstAttribute="top" secondItem="8D7-Zj-5wi" secondAttribute="top" constant="15" id="Dot-aV-4Ls"/>
+                            <constraint firstAttribute="height" constant="160" id="Smy-kd-0WN"/>
+                            <constraint firstAttribute="width" constant="350" id="dSu-sn-hUg"/>
+                            <constraint firstAttribute="bottom" secondItem="1kb-Z1-FSb" secondAttribute="bottom" constant="15" id="w0j-ck-9X4"/>
+                            <constraint firstAttribute="trailing" secondItem="1kb-Z1-FSb" secondAttribute="trailing" constant="8" id="wxc-tz-3KM"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="8D7-Zj-5wi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="5s7-ZH-jvq"/>
+                <constraint firstAttribute="trailing" secondItem="8D7-Zj-5wi" secondAttribute="trailing" id="RVB-fs-G2P"/>
+                <constraint firstItem="8D7-Zj-5wi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fub-UI-nFw"/>
+                <constraint firstAttribute="bottom" secondItem="8D7-Zj-5wi" secondAttribute="bottom" id="jwJ-n8-Gmk"/>
+            </constraints>
+            <size key="customSize" width="352" height="168"/>
+            <connections>
+                <outlet property="budgetCard" destination="1kb-Z1-FSb" id="sle-9Y-c0a"/>
+                <outlet property="budgetDescription" destination="t6S-9S-Wsn" id="bff-gL-D31"/>
+                <outlet property="budgetExpense" destination="fYc-6E-p77" id="kZk-c3-5Dt"/>
+                <outlet property="budgetLimit" destination="AIh-AZ-wiQ" id="JPz-wA-9yL"/>
+                <outlet property="budgetProgress" destination="9TJ-8U-O20" id="ku0-WW-NTG"/>
+                <outlet property="budgetTitle" destination="wyQ-KK-iuj" id="Hlx-3R-R6D"/>
+            </connections>
+            <point key="canvasLocation" x="72.463768115942031" y="31.473214285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

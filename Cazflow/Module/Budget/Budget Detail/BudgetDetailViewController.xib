@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BudgetDetailViewController" customModule="Cazflow" customModuleProvider="target">
+            <connections>
+                <outlet property="budgetDetailDescription" destination="oLQ-by-knN" id="Q23-BI-OB8"/>
+                <outlet property="budgetDetailTitle" destination="gqr-2N-DDZ" id="tuB-YO-Oyj"/>
+                <outlet property="tableView" destination="OZK-6Q-O0g" id="aW3-KM-MZw"/>
+                <outlet property="topView" destination="n40-3C-For" id="vUo-tB-ACb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleAspectFit" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoR-rl-1oj">
+                    <rect key="frame" x="25" y="215" width="58.5" height="17"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eV9-w8-vRA">
+                    <rect key="frame" x="15" y="252" width="384" height="1"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.75686274509999996" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="jd8-iA-TPb"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6u-SP-ahR">
+                    <rect key="frame" x="332" y="215" width="34" height="22"/>
+                    <state key="normal" image="Minus"/>
+                    <connections>
+                        <action selector="addExpense:" destination="-1" eventType="touchUpInside" id="gaG-IL-AQ2"/>
+                    </connections>
+                </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OZK-6Q-O0g">
+                    <rect key="frame" x="15" y="253" width="384" height="589"/>
+                    <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="NKV-6o-MJl"/>
+                        <outlet property="delegate" destination="-1" id="0g9-v0-rdJ"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n40-3C-For">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="195"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Housing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqr-2N-DDZ">
+                            <rect key="frame" x="25" y="113.5" width="68" height="21"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal budget for rent,electricity, etc." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLQ-by-knN">
+                            <rect key="frame" x="25" y="134.5" width="197.5" height="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Savings" translatesAutoresizingMaskIntoConstraints="NO" id="0zH-8k-lW8">
+                            <rect key="frame" x="309" y="94" width="80" height="60"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="80" id="0AI-g8-fXR"/>
+                                <constraint firstAttribute="height" constant="60" id="zDW-MW-HNR"/>
+                            </constraints>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCd-lm-pcz">
+                            <rect key="frame" x="25" y="69" width="364" height="17"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                            <color key="tintColor" red="0.070588235294117646" green="0.070588235294117646" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
+                            <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Budget" image="arrow.backward" catalog="system">
+                                <color key="titleColor" red="0.070588235289999995" green="0.070588235289999995" blue="0.070588235289999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="backButton:" destination="-1" eventType="touchUpInside" id="kNy-tt-XA8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.75686274509999996" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="oLQ-by-knN" firstAttribute="top" secondItem="gqr-2N-DDZ" secondAttribute="bottom" id="5iQ-vl-6Cz"/>
+                        <constraint firstAttribute="trailing" secondItem="kCd-lm-pcz" secondAttribute="trailing" constant="25" id="NxG-b4-dU3"/>
+                        <constraint firstItem="oLQ-by-knN" firstAttribute="leading" secondItem="gqr-2N-DDZ" secondAttribute="leading" id="VXu-Ef-L1M"/>
+                        <constraint firstAttribute="trailing" secondItem="0zH-8k-lW8" secondAttribute="trailing" constant="25" id="Z9f-rJ-DLz"/>
+                        <constraint firstItem="gqr-2N-DDZ" firstAttribute="centerY" secondItem="0zH-8k-lW8" secondAttribute="centerY" id="kcY-ZU-Yj8"/>
+                        <constraint firstItem="kCd-lm-pcz" firstAttribute="leading" secondItem="gqr-2N-DDZ" secondAttribute="leading" id="mHU-rg-5I1"/>
+                        <constraint firstItem="gqr-2N-DDZ" firstAttribute="leading" secondItem="n40-3C-For" secondAttribute="leading" constant="25" id="rSx-XT-Lw2"/>
+                        <constraint firstAttribute="height" constant="195" id="raJ-Ke-mMX"/>
+                        <constraint firstItem="0zH-8k-lW8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oLQ-by-knN" secondAttribute="trailing" constant="50" id="zLA-cV-uqj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="OZK-6Q-O0g" firstAttribute="leading" secondItem="eV9-w8-vRA" secondAttribute="leading" id="Dvr-bO-vTs"/>
+                <constraint firstItem="x6u-SP-ahR" firstAttribute="centerX" secondItem="0zH-8k-lW8" secondAttribute="centerX" id="Gis-Bs-XjJ"/>
+                <constraint firstItem="eV9-w8-vRA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="QZQ-Fa-UCV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n40-3C-For" secondAttribute="trailing" id="Yyb-4k-E8a"/>
+                <constraint firstItem="kCd-lm-pcz" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="25" id="bTf-Mz-6Hj"/>
+                <constraint firstItem="n40-3C-For" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="cl2-xw-mRN"/>
+                <constraint firstItem="xoR-rl-1oj" firstAttribute="leading" secondItem="gqr-2N-DDZ" secondAttribute="leading" id="g9A-I1-ddd"/>
+                <constraint firstItem="xoR-rl-1oj" firstAttribute="top" secondItem="n40-3C-For" secondAttribute="bottom" constant="20" id="hJE-R6-djY"/>
+                <constraint firstItem="n40-3C-For" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hYs-0y-LMn"/>
+                <constraint firstAttribute="trailing" secondItem="eV9-w8-vRA" secondAttribute="trailing" constant="15" id="hcd-Q1-fBw"/>
+                <constraint firstItem="OZK-6Q-O0g" firstAttribute="trailing" secondItem="eV9-w8-vRA" secondAttribute="trailing" id="nSn-9E-dnC"/>
+                <constraint firstItem="eV9-w8-vRA" firstAttribute="top" secondItem="xoR-rl-1oj" secondAttribute="bottom" constant="20" id="nh4-Nv-uth"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OZK-6Q-O0g" secondAttribute="bottom" constant="20" id="q0h-hW-hoi"/>
+                <constraint firstItem="x6u-SP-ahR" firstAttribute="top" secondItem="xoR-rl-1oj" secondAttribute="top" id="rbQ-hT-k29"/>
+                <constraint firstItem="0zH-8k-lW8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="wdh-aO-Nnq"/>
+                <constraint firstItem="OZK-6Q-O0g" firstAttribute="top" secondItem="eV9-w8-vRA" secondAttribute="bottom" id="z0F-fN-YSp"/>
+            </constraints>
+            <point key="canvasLocation" x="-142.02898550724638" y="111.83035714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Minus" width="34" height="17"/>
+        <image name="Savings" width="128" height="128"/>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
