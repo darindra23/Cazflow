@@ -146,7 +146,6 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print(indexPath.section)
         if cashflowController.fetchedObjects?.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmptyDataTableViewCell.cellIdentifier, for: indexPath)
             cell.selectionStyle = .none
