@@ -22,9 +22,9 @@ class BudgetCell: UICollectionViewCell {
             if let budget = budget {
                 budgetTitle.text = budget.name?.capitalized
                 budgetDescription.text = budget.budgetDescription?.capitalized
-                budgetLimit.text = Rupiah.formatRupiah(budget.budget)
-                budgetExpense.text = Rupiah.formatRupiah(budget.balance)
-                budgetProgress.setProgress(Float(Float(budget.balance) / Float(budget.budget)), animated: true)
+                budgetLimit.text = Utils.shared.formatRupiah(budget.budget)
+                budgetExpense.text = Utils.shared.formatRupiah(budget.balance)
+                budgetProgress.setProgress(Float(Float(budget.balance) / Float(budget.budget)), animated: false)
             }
         }
     }

@@ -40,7 +40,6 @@
 		6E5A6A7A264038EB000A736F /* EmptyDataCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5A6A78264038EB000A736F /* EmptyDataCollectionViewCell.xib */; };
 		6E5A6A7C264041DC000A736F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5A6A7B264041DC000A736F /* CoreDataManager.swift */; };
 		6E90D7702640E6C1005F1E90 /* GenerateCoreDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D76F2640E6C1005F1E90 /* GenerateCoreDataModel.swift */; };
-		6E90D774264109D5005F1E90 /* Rupiah.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D773264109D5005F1E90 /* Rupiah.swift */; };
 		6E90D77626412098005F1E90 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D77526412098005F1E90 /* Date.swift */; };
 		6E90D78926423CC9005F1E90 /* Cashflow+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D78326423CC9005F1E90 /* Cashflow+CoreDataClass.swift */; };
 		6E90D78A26423CC9005F1E90 /* Cashflow+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D78426423CC9005F1E90 /* Cashflow+CoreDataProperties.swift */; };
@@ -48,6 +47,8 @@
 		6E90D78C26423CC9005F1E90 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D78626423CC9005F1E90 /* User+CoreDataProperties.swift */; };
 		6E90D78D26423CC9005F1E90 /* Budget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D78726423CC9005F1E90 /* Budget+CoreDataClass.swift */; };
 		6E90D78E26423CC9005F1E90 /* Budget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E90D78826423CC9005F1E90 /* Budget+CoreDataProperties.swift */; };
+		6ECBB54C26464D7200F75859 /* UtilsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBB54B26464D7200F75859 /* UtilsManager.swift */; };
+		6ECBB54E26464D9E00F75859 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ECBB54D26464D9E00F75859 /* String.swift */; };
 		6EEBB6CF263BE17E00D78F98 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEBB6CE263BE17E00D78F98 /* BudgetViewController.swift */; };
 		6EEBB6D6263C10F200D78F98 /* CashflowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEBB6D4263C10F200D78F98 /* CashflowTableViewCell.swift */; };
 		6EEBB6D7263C10F200D78F98 /* CashflowTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEBB6D5263C10F200D78F98 /* CashflowTableViewCell.xib */; };
@@ -89,7 +90,6 @@
 		6E5A6A78264038EB000A736F /* EmptyDataCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyDataCollectionViewCell.xib; sourceTree = "<group>"; };
 		6E5A6A7B264041DC000A736F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6E90D76F2640E6C1005F1E90 /* GenerateCoreDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateCoreDataModel.swift; sourceTree = "<group>"; };
-		6E90D773264109D5005F1E90 /* Rupiah.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rupiah.swift; sourceTree = "<group>"; };
 		6E90D77526412098005F1E90 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		6E90D78326423CC9005F1E90 /* Cashflow+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cashflow+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6E90D78426423CC9005F1E90 /* Cashflow+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cashflow+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -97,6 +97,8 @@
 		6E90D78626423CC9005F1E90 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6E90D78726423CC9005F1E90 /* Budget+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6E90D78826423CC9005F1E90 /* Budget+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6ECBB54B26464D7200F75859 /* UtilsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsManager.swift; sourceTree = "<group>"; };
+		6ECBB54D26464D9E00F75859 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6EEBB6CE263BE17E00D78F98 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		6EEBB6D4263C10F200D78F98 /* CashflowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashflowTableViewCell.swift; sourceTree = "<group>"; };
 		6EEBB6D5263C10F200D78F98 /* CashflowTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CashflowTableViewCell.xib; sourceTree = "<group>"; };
@@ -194,8 +196,8 @@
 			children = (
 				6E17DAC2263AA2B90037810E /* UIView.swift */,
 				6E17DAC6263AAE880037810E /* UIColor.swift */,
-				6E90D773264109D5005F1E90 /* Rupiah.swift */,
 				6E90D77526412098005F1E90 /* Date.swift */,
+				6ECBB54D26464D9E00F75859 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				6E25F8F7263D29B7001E43BC /* Core Data Manager */,
+				6ECBB54A26464D6100F75859 /* Utils */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -331,6 +334,14 @@
 			path = "Managed Object Subclass";
 			sourceTree = "<group>";
 		};
+		6ECBB54A26464D6100F75859 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6ECBB54B26464D7200F75859 /* UtilsManager.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		6EEBB6D3263C10E000D78F98 /* Cashflow Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,13 +444,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ECBB54E26464D9E00F75859 /* String.swift in Sources */,
 				6E25F8FB263D2A34001E43BC /* BudgetCell.swift in Sources */,
 				6E5A6A79264038EB000A736F /* EmptyDataCollectionViewCell.swift in Sources */,
 				6E5A6A6F2640182B000A736F /* ProTips.swift in Sources */,
 				6E90D78E26423CC9005F1E90 /* Budget+CoreDataProperties.swift in Sources */,
 				6E17DAC7263AAE880037810E /* UIColor.swift in Sources */,
 				6E90D78926423CC9005F1E90 /* Cashflow+CoreDataClass.swift in Sources */,
-				6E90D774264109D5005F1E90 /* Rupiah.swift in Sources */,
 				6E5A6A732640262D000A736F /* EmptyDataTableViewCell.swift in Sources */,
 				6E17DA88263A82490037810E /* AppDelegate.swift in Sources */,
 				6E90D78C26423CC9005F1E90 /* User+CoreDataProperties.swift in Sources */,
@@ -449,6 +460,7 @@
 				6EEBB6D6263C10F200D78F98 /* CashflowTableViewCell.swift in Sources */,
 				6E25F90B263FA59B001E43BC /* AddCashflowViewController.swift in Sources */,
 				6E5A6A67263FE414000A736F /* AddBudgetViewController.swift in Sources */,
+				6ECBB54C26464D7200F75859 /* UtilsManager.swift in Sources */,
 				6E90D78B26423CC9005F1E90 /* User+CoreDataClass.swift in Sources */,
 				6E17DAB4263A93BD0037810E /* DashboardViewController.swift in Sources */,
 				6E17DA92263A82490037810E /* Cazflow.xcdatamodeld in Sources */,

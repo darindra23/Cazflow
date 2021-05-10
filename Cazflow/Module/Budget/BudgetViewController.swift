@@ -14,7 +14,7 @@ class BudgetViewController: UIViewController {
     @IBOutlet weak var balance: UILabel!
 
     private var budgets = [Budget]()
-    private var user = [User]()
+    private var user: User?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,12 @@ class BudgetViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchBudget()
+        collectionView.reloadData()
     }
 
     @IBAction func addBudget(_ sender: Any) {
         let addBudgetVC = AddBudgetViewController(nibName: "AddBudgetViewController", bundle: nil)
-        addBudgetVC.user = self.user[0]
+        addBudgetVC.user = user
         addBudgetVC.reloadCollection = {
             self.fetchBudget()
             let indexPath = IndexPath(row: self.budgets.count - 1, section: 0)
@@ -40,7 +41,6 @@ class BudgetViewController: UIViewController {
 
 fileprivate extension BudgetViewController {
     func setup() {
-        self.fetchBudget()
         self.fetchUser()
         self.navigationController?.isNavigationBarHidden = true
         topView.gradient(colors: UIColor.cazflowGradient)
@@ -91,7 +91,7 @@ extension BudgetViewController: UICollectionViewDataSource, UICollectionViewDele
         if budgets.count > 0 {
             let budgetDetailVC = BudgetDetailViewController(nibName: "BudgetDetailViewController", bundle: nil)
             budgetDetailVC.budget = budgets[indexPath.row]
-            budgetDetailVC.user = user[0]
+            budgetDetailVC.user = user
             self.navigationController?.pushViewController(budgetDetailVC, animated: true)
         }
     }

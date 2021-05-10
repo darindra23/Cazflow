@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 import CoreData
 
-struct CoreDataManager {
+class CoreDataManager {
     // MARK: - Config CoreData
     static var shared = CoreDataManager()
     private init() { }
@@ -23,8 +24,11 @@ struct CoreDataManager {
         return container
     }()
 
+    lazy var context: NSManagedObjectContext = {
+        return self.persistentContainer.viewContext
+    }()
+
     func saveContext () {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         if context.hasChanges {
             do {
                 try context.save()
@@ -34,17 +38,41 @@ struct CoreDataManager {
             }
         }
     }
+
+    lazy var cashflowController: NSFetchedResultsController<Cashflow> = {
+        let fetchRequest = NSFetchRequest<Cashflow>(entityName: "Cashflow")
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Cashflow.date), ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.predicate = getPredicateForCashflow()
+
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: #keyPath(Cashflow.getDateOnly),
+            cacheName: nil)
+
+        return fetchedResultsController
+    }()
+
+    lazy var budgetCashflowController: NSFetchedResultsController<Cashflow> = {
+        let fetchRequest = NSFetchRequest<Cashflow>(entityName: "Cashflow")
+        let sortDescriptor = NSSortDescriptor(key: #keyPath(Cashflow.date), ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: context,
+            sectionNameKeyPath: #keyPath(Cashflow.getDateOnly),
+            cacheName: nil)
+
+        return fetchedResultsController
+    }()
 }
 
-fileprivate extension CoreDataManager {
-
-}
 // MARK: - Func for Business Processs
 extension CoreDataManager {
     func createUser() {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         let coreDataUser = User(context: context)
-
         coreDataUser.balance = 0
 
         do {
@@ -54,17 +82,16 @@ extension CoreDataManager {
         }
     }
 
-    func fetchUser() -> [User]? {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
+    func fetchUser() -> User? {
         do {
-            return try context.fetch(User.fetchRequest())
+            let users = try context.fetch(User.fetchRequest())
+            return users[0] as? User
         } catch {
             fatalError()
         }
     }
 
     func fetchDashboardUser() -> GenerateUser? {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Cashflow")
         let predicate = self.getPredicateForCashflow()
         let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
@@ -95,7 +122,6 @@ extension CoreDataManager {
     }
 
     func fetchBudget() -> [Budget]? {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         do {
             return try context.fetch(Budget.fetchRequest())
         } catch {
@@ -103,10 +129,25 @@ extension CoreDataManager {
         }
     }
 
-    func createBudget(_ user: User, _ budget: GenerateBudget) {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let coreDataBudget = Budget(context: context)
+    func fetchBudgetCashflow(_ budget: Budget) {
+        budgetCashflowController.fetchRequest.predicate = getPredicateForBudgetExpense(budget: budget)
+        do {
+            try budgetCashflowController.performFetch()
+        } catch {
+            fatalError()
+        }
+    }
 
+    func fetchCashflow() {
+        do {
+            try cashflowController.performFetch()
+        } catch {
+            fatalError()
+        }
+    }
+
+    func createBudget(_ user: User, _ budget: GenerateBudget) {
+        let coreDataBudget = Budget(context: context)
 
         coreDataBudget.name = budget.name
         coreDataBudget.budgetDescription = budget.budgetDescription
@@ -123,7 +164,6 @@ extension CoreDataManager {
     }
 
     func addIncome (_ user: User, cashflow: GenerateCashflow) {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         let coreDataCashflow = Cashflow(context: context)
 
         coreDataCashflow.type = cashflow.type
@@ -145,7 +185,6 @@ extension CoreDataManager {
     }
 
     func addExpense (_ user: User, _ budget: Budget, _ cashflow: GenerateCashflow) {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
         let coreDataCashflow = Cashflow(context: context)
 
         coreDataCashflow.type = cashflow.type
@@ -167,88 +206,10 @@ extension CoreDataManager {
         } catch {
             fatalError()
         }
-
-    }
-
-    func fetchBudgetCashflow(budget: Budget) -> [String: [Cashflow]]? {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Cashflow")
-        let predicate = self.getPredicateForBudgetExpense(budget: budget)
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-        let sortDescriptors = [sortDescriptor]
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = predicate
-
-        var groupedCashflow = [String: [Cashflow]]()
-
-        do {
-            if let cashflows = try context.fetch(fetchRequest) as? [Cashflow] {
-                for cashflow in cashflows {
-                    if let date = cashflow.date?.getDateOnly {
-                        if groupedCashflow[date] != nil {
-                            var cashflowArray = groupedCashflow[date]
-                            cashflowArray?.append(cashflow)
-                            groupedCashflow[date] = cashflowArray
-                        } else {
-                            groupedCashflow[date] = [cashflow]
-                        }
-                    }
-                }
-            }
-        } catch {
-            fatalError()
-        }
-        return groupedCashflow
-    }
-
-    func fetchCashflow() -> [String: [Cashflow]]? {
-        let context = CoreDataManager.shared.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Cashflow")
-        let predicate = self.getPredicateForCashflow()
-        let sortDescriptor = NSSortDescriptor(key: "date", ascending: false)
-        let sortDescriptors = [sortDescriptor]
-        fetchRequest.sortDescriptors = sortDescriptors
-        fetchRequest.predicate = predicate
-        var groupedCashflow = [String: [Cashflow]]()
-
-        do {
-            if let cashflows = try context.fetch(fetchRequest) as? [Cashflow] {
-                for cashflow in cashflows {
-                    if let date = cashflow.date?.getDateOnly {
-                        if groupedCashflow[date] != nil {
-                            var cashflowArray = groupedCashflow[date]
-                            cashflowArray?.append(cashflow)
-                            groupedCashflow[date] = cashflowArray
-                        } else {
-                            groupedCashflow[date] = [cashflow]
-                        }
-                    }
-                }
-            }
-        } catch {
-            fatalError()
-        }
-        return sortWithKeys(groupedCashflow) as? [String: [Cashflow]]
     }
 }
 
 fileprivate extension CoreDataManager {
-    func getPredicateForBudgetExpense(budget: Budget) -> NSCompoundPredicate {
-        var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone.local
-
-        let startOfMonth = Date().startOfMonth
-        let endOfMonth = Date().endOfMonth
-
-
-        let fromPredicate = NSPredicate(format: "date >= %@", startOfMonth as NSDate)
-        let toPredicate = NSPredicate(format: "date <= %@", endOfMonth as NSDate)
-        let predicateBudget = NSPredicate(format: "budget == %@", budget)
-
-        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate, predicateBudget])
-        return predicate
-    }
-
     func getPredicateForCashflow() -> NSCompoundPredicate {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
@@ -265,15 +226,19 @@ fileprivate extension CoreDataManager {
         return predicate
     }
 
-    func sortWithKeys(_ dict: [String: Any]) -> [String: Any] {
-        let sortedKey = Array(dict.keys).sorted(by: >)
-        var newDict: [String: Any] = [:]
-        for key in sortedKey {
-            print(key)
-            newDict[key] = dict[key]
-        }
+    func getPredicateForBudgetExpense(budget: Budget) -> NSCompoundPredicate {
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
 
-        print(newDict)
-        return newDict
+        let startOfMonth = Date().startOfMonth
+        let endOfMonth = Date().endOfMonth
+
+
+        let fromPredicate = NSPredicate(format: "date >= %@", startOfMonth as NSDate)
+        let toPredicate = NSPredicate(format: "date <= %@", endOfMonth as NSDate)
+        let predicateBudget = NSPredicate(format: "budget == %@", budget)
+
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [fromPredicate, toPredicate, predicateBudget])
+        return predicate
     }
 }

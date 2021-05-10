@@ -18,11 +18,13 @@ class CashflowTableViewCell: UITableViewCell {
         didSet {
             if let cashflow = cashflow {
                 cashflowNote.text = cashflow.note
-                cashflowNominal.text = Rupiah.formatRupiah(cashflow.nominal)
+                cashflowNominal.text = Utils.shared.formatRupiah(cashflow.nominal)
                 cashflowType.text = cashflow.type?.uppercased()
 
                 if cashflow.type?.uppercased() == "INCOME" {
                     cashflowType.textColor = UIColor.cazflowColor
+                } else {
+                    cashflowType.textColor = UIColor(hexString: "#8A8A8E")
                 }
             }
         }

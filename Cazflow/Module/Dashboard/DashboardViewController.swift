@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DashboardViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
@@ -19,23 +20,27 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var proTipsCard: UIView!
     @IBOutlet weak var proTips: UILabel!
 
-
     private var tips: ProTips = ProTipsCollection.shared.getProTips()
     private var budgets = [Budget]()
-    private var cashflows = [String: [Cashflow]]()
     private var dashboardUser = GenerateUser(balance: 0, income: 0, expense: 0)
-    private var user = [User]()
+    private var user: User?
+
+    private lazy var cashflowController = CoreDataManager.shared.cashflowController
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        // MARK: Demo Purpose Only
 //        CoreDataManager.shared.createUser()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchUser()
+        fetchDashboardUser()
         fetchBudget()
+        fetchCashflow()
     }
 
     @IBAction func openProTips(_ sender: UITapGestureRecognizer) {
@@ -48,19 +53,9 @@ class DashboardViewController: UIViewController {
         let addCashflowVC = AddCashflowViewController(nibName: "AddCashflowViewController", bundle: nil)
         addCashflowVC.tag = sender.tag
         addCashflowVC.budgets = self.budgets
-        addCashflowVC.user = self.user[0]
+        addCashflowVC.user = user
         addCashflowVC.reloadCashflow = {
-            self.fetchCashflow()
             self.fetchDashboardUser()
-            self.tableView.reloadData()
-
-//            if self.cashflows.isEmpty {
-//                self.tableView.reloadData()
-//            } else {
-//                let indexPath = IndexPath(row: 0, section: 0)
-//                self.tableView.insertRows(at: [indexPath], with: .automatic)
-//            }
-
         }
         self.present(addCashflowVC, animated: true, completion: nil)
     }
@@ -68,12 +63,9 @@ class DashboardViewController: UIViewController {
 
 fileprivate extension DashboardViewController {
     func setup() {
-        fetchBudget()
-        fetchCashflow()
-        fetchDashboardUser()
-        fetchUser()
         topView.gradient(colors: UIColor.cazflowGradient)
 
+        cashflowController.delegate = self
 
         balanceCard.layer.cornerRadius = 10
         balanceCard.dropShadow()
@@ -86,9 +78,6 @@ fileprivate extension DashboardViewController {
         tableView.register(EmptyDataTableViewCell.nib(), forCellReuseIdentifier: EmptyDataTableViewCell.cellIdentifier)
         tableView.alwaysBounceVertical = false
         tableView.tableFooterView = UIView()
-        if budgets.count < 1 {
-            tableView.separatorStyle = .none
-        }
     }
 
     func fetchBudget() {
@@ -103,16 +92,14 @@ fileprivate extension DashboardViewController {
     }
 
     func fetchCashflow() {
-        if let cashflow = CoreDataManager.shared.fetchCashflow() {
-            self.cashflows = cashflow
-        }
+        CoreDataManager.shared.fetchCashflow()
     }
 
     func fetchDashboardUser() {
         if let dashboardUser = CoreDataManager.shared.fetchDashboardUser() {
-            currentBalance.text = Rupiah.formatRupiah(dashboardUser.balance)
-            incomeBalance.text = Rupiah.formatRupiah(dashboardUser.income)
-            expenseBalance.text = Rupiah.formatRupiah(dashboardUser.expense)
+            currentBalance.text = Utils.shared.formatRupiah(dashboardUser.balance)
+            incomeBalance.text = Utils.shared.formatRupiah(dashboardUser.income)
+            expenseBalance.text = Utils.shared.formatRupiah(dashboardUser.expense)
             self.dashboardUser = dashboardUser
         }
     }
@@ -126,51 +113,103 @@ fileprivate extension DashboardViewController {
 
 extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if !cashflows.isEmpty {
+        let sectionCount = cashflowController.sections?.count ?? 0
+        if sectionCount > 0 {
             let v = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 30))
             let divider = UIView(frame: CGRect(x: 5, y: v.bounds.size.height - 1, width: tableView.frame.width - 10, height: 1))
+            let label = UILabel(frame: CGRect(x: 12.0, y: 4.0, width: v.bounds.size.width - 16.0, height: v.bounds.size.height - 8.0))
+            let sectionInfo = cashflowController.sections?[section]
 
             v.backgroundColor = .white
             divider.backgroundColor = .tertiarySystemFill
-            let label = UILabel(frame: CGRect(x: 12.0, y: 4.0, width: v.bounds.size.width - 16.0, height: v.bounds.size.height - 8.0))
             label.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            label.text = Array(cashflows)[section].key
+            label.text = sectionInfo?.name
             label.font = UIFont.boldSystemFont(ofSize: 13)
             v.addSubview(label)
             v.addSubview(divider)
             return v
-        } else {
-            return UIView()
         }
+
+        return UIView()
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        if cashflows.count < 1 {
-            return 1
-        } else {
-            return cashflows.count
-        }
+        if cashflowController.sections?.count == 0 { return 1 }
+        return cashflowController.sections?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cashflows.count < 1 {
-            return 1
-        } else {
-            return Array(cashflows)[section].value.count
-        }
+        if cashflowController.sections?.count == 0 { return 1 }
+
+        guard let sectionInfo = cashflowController.sections?[section] else { return 1 }
+        return sectionInfo.numberOfObjects
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if cashflows.count < 1 {
+        print(indexPath.section)
+        if cashflowController.fetchedObjects?.count == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: EmptyDataTableViewCell.cellIdentifier, for: indexPath)
             cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: CashflowTableViewCell.cellIdentifier, for: indexPath) as! CashflowTableViewCell
-            let cashflowKey = Array(cashflows)[indexPath.section].key
-            guard let cashflows = cashflows[cashflowKey] else { return cell }
-            cell.cashflow = cashflows[indexPath.row]
+            cell.cashflow = cashflowController.object(at: indexPath)
             return cell
+        }
+    }
+}
+
+extension DashboardViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+
+    func controller(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>,
+    didChange anObject: Any,
+    at indexPath: IndexPath?,
+    for type: NSFetchedResultsChangeType,
+    newIndexPath: IndexPath?) {
+        if cashflowController.fetchedObjects?.count != 1 {
+            switch type {
+            case .insert:
+                tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            case .delete:
+                tableView.deleteRows(at: [indexPath!], with: .automatic)
+            case .update:
+                let cell = tableView.cellForRow(at: indexPath!) as! CashflowTableViewCell
+                cell.cashflow = cashflowController.object(at: indexPath!)
+            case .move:
+                tableView.deleteRows(at: [indexPath!], with: .automatic)
+                tableView.insertRows(at: [newIndexPath!], with: .automatic)
+            @unknown default:
+                print("Unexpected NSFetchedResultsChangeType")
+            }
+        } else {
+            tableView.reloadData()
+        }
+    }
+
+    func controllerDidChangeContent(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+
+    func controller(_ controller:
+        NSFetchedResultsController<NSFetchRequestResult>,
+    didChange sectionInfo: NSFetchedResultsSectionInfo,
+    atSectionIndex sectionIndex: Int,
+    for type: NSFetchedResultsChangeType) {
+        if sectionIndex > 0 {
+            let indexSet = IndexSet(integer: sectionIndex)
+
+            switch type {
+            case .insert:
+                tableView.insertSections(indexSet, with: .automatic)
+            case .delete:
+                tableView.deleteSections(indexSet, with: .automatic)
+            default: break
+            }
         }
     }
 }

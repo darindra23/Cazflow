@@ -1,23 +1,11 @@
 //
-//  Rupiah.swift
+//  String.swift
 //  Cazflow
 //
-//  Created by Darindra R on 04/05/21.
+//  Created by Darindra R on 08/05/21.
 //
 
 import Foundation
-
-struct Rupiah {
-    static func formatRupiah(_ nominal: Int64) -> String {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "id_ID")
-        formatter.groupingSeparator = "."
-        formatter.numberStyle = .decimal
-        guard let formattedTipAmount = formatter.string(from: nominal as NSNumber) else { return "" }
-
-        return "Rp " + formattedTipAmount
-    }
-}
 
 extension String {
     func currencyInputFormatting() -> String {

@@ -42,7 +42,7 @@
                         <action selector="addExpense:" destination="-1" eventType="touchUpInside" id="gaG-IL-AQ2"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OZK-6Q-O0g">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OZK-6Q-O0g">
                     <rect key="frame" x="15" y="253" width="384" height="589"/>
                     <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                     <connections>

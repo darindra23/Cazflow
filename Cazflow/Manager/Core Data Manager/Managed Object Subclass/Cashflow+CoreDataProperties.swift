@@ -27,6 +27,17 @@ extension Cashflow {
 
 }
 
-extension Cashflow : Identifiable {
+extension Cashflow: Identifiable {
 
 }
+
+extension Cashflow {
+    @objc var getDateOnly: String { get {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMMM yyy"
+
+        return formatter.string(from: self.date!)
+    } }
+}
+
+
